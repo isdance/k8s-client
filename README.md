@@ -1,6 +1,6 @@
 ### This is the front-end part of k8s deployment project
 
-- front-end
+- front-end [here](https://github.com/isdance/k8s-client)
 - back-end
 - database
 - deployment
