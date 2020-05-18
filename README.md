@@ -2,7 +2,7 @@
 
 - front-end [here](https://github.com/isdance/k8s-client)
 - back-end
-- database
+- database [here](https://github.com/isdance/k8s-postgre)
 - deployment
 
 #### Install
