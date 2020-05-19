@@ -1,7 +1,5 @@
 pipeline {
-     agent {
-        docker { image 'node:12.16.3-alpine3.11' }
-     }
+     agent any
      environment {
         CI = 'true'
         HOME = '.'
@@ -15,9 +13,8 @@ pipeline {
              }
          }
          stage('Lint HTML') {
-              agent any
               steps {
-                  sh 'tidy -q -e *.html'
+                  sh 'tidy -q -e build/index.html'
               }
          }
          stage('Lint') {
