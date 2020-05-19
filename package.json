@@ -1,7 +1,6 @@
 {
   "name": "client-react",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@babel/core": "7.9.0",
     "@svgr/webpack": "4.3.3",
@@ -64,7 +63,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "lint": "eslint",
+    "lint": "eslint src/**/*.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
