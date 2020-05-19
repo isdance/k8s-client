@@ -27,5 +27,30 @@ pipeline {
                   sh 'npm test'
               }
          }
+         docker.withRegistry('https://hub.docker.com/', 'dockerhub') {
+            def customImage = docker.build("isdance/client")
+            /* Push the container to the custom Registry */
+            customImage.push()
+        }
+        //  stage('Build Docker Image') {
+		// 	steps {
+		// 		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
+		// 			sh '''
+		// 				docker build -t isdance/client .
+		// 			'''
+		// 		}
+		// 	}
+		// }
+
+		// stage('Push Image To Dockerhub') {
+		// 	steps {
+		// 		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
+		// 			sh '''
+		// 				docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+		// 				docker push isdance/client
+		// 			'''
+		// 		}
+		// 	}
+		// }
      }
 }
