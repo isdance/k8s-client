@@ -17,12 +17,12 @@ pipeline {
                   sh 'tidy -q -e build/index.html'
               }
          }
-         stage('Lint') {
+         stage('Lint JavaScript') {
               steps {
                   sh 'npm run lint'
               }
          }
-         stage('Test') {
+         stage('Unit Tests') {
               steps {
                   sh 'npm test'
               }
@@ -31,7 +31,7 @@ pipeline {
 			steps {
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
-						docker build -t isdance/client .
+						docker build -t isdance/client:v-${env.BUILD_ID} .
 					'''
 				}
 			}
@@ -42,7 +42,7 @@ pipeline {
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
 						docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-						docker push isdance/client
+						docker push isdance/client:v-${env.BUILD_ID}
 					'''
 				}
 			}
