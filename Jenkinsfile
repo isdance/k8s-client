@@ -44,7 +44,10 @@ pipeline {
 						docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 					'''
                     sh "docker push isdance/client:v-${env.BUILD_ID}"
-                    sh  "sed -i -e \"/client:v-/s/\\([0-9]\\+\\)/${env.BUILD_ID}/\" /home/ubuntu/k8s-simple-templates/test.yml"
+                    sh "ls -ld /tmp"
+                    sh "cp /home/ubuntu/k8s-simple-templates/test.yml /tmp"
+                    sh "sed -i -e \"/client:v-/s/\\([0-9]\\+\\)/${env.BUILD_ID}/\" /tmp/test.yml"
+                    sh "cat /tmp/test.yml > /home/ubuntu/k8s-simple-templates/test.yml"
 				}
 			}
 		}
