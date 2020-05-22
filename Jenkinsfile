@@ -46,9 +46,15 @@ pipeline {
                     sh "docker push isdance/client:v-${env.BUILD_ID}"
                     sh "cp /home/ubuntu/k8s-simple-templates/client-deployment.yml /tmp"
                     sh "sed -i -e \"/client:v-/s/\\([0-9]\\+\\)/${env.BUILD_ID}/\" /tmp/client-deployment.yml"
-                    sh "/home/ubuntu/bin/kubectl apply -f /tmp/client-deployment.yml"
 				}
 			}
 		}
+
+        stage('Apply Kubernetes files') {
+            withKubeConfig([credentialsId: 'aws-static', serverUrl: 'https://4EB7DC51970C7A5A86305E866C1F48A8.yl4.us-west-2.eks.amazonaws.com']) {
+                sh 'kubectl get deployments'
+                sh 'kubectl apply -f /tmp/client-deployment.yml'
+            }
+        }
      }
 }
