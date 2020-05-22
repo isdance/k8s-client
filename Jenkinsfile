@@ -45,7 +45,7 @@ pipeline {
 					'''
                     sh "docker push isdance/client:v-${env.BUILD_ID}"
                     sh "cd ${env.K8S_TEMPLATES_FOLDER}"
-                    sh ". ${env.K8S_TEMPLATES_FOLDER}/update_build_no.sh" ${env.BUILD_ID} ${env.k8S_TEMPLATE}
+                    sh "bash c \". /home/ubuntu/k8s-simple-templates/update_build_no.sh ${env.BUILD_ID} ${env.k8S_TEMPLATE}""
 				}
 			}
 		}
