@@ -3,6 +3,8 @@ pipeline {
      environment {
         CI = 'true'
         HOME = '.'
+        K8S_TEMPLATES_FOLDER = '/home/ubuntu/k8s-simple-templates'
+        k8S_TEMPLATE = 'client-deployment.yml'
     }
      stages {
          stage('Build') {
@@ -42,8 +44,8 @@ pipeline {
 						docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 					'''
                     sh "docker push isdance/client:v-${env.BUILD_ID}"
-                    sh "ls -la /home/ubuntu/k8s-simple-templates"
-                    sh "cat /home/ubuntu/k8s-simple-templates/client-deployment.yml"
+                    sh "ls -la ${env.K8S_TEMPLATES_FOLDER}"
+                    sh "cat ${env.K8S_TEMPLATES_FOLDER}/${env.k8S_TEMPLATE}"
 				}
 			}
 		}
