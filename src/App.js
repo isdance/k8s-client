@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn Cloud DevOps.
+          Learn React from Udemy!!!.
         </a>
       </header>
     </div>
