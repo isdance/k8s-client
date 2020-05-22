@@ -51,9 +51,11 @@ pipeline {
 		}
 
         stage('Apply Kubernetes files') {
-            withKubeConfig([credentialsId: 'aws-static', serverUrl: 'https://4EB7DC51970C7A5A86305E866C1F48A8.yl4.us-west-2.eks.amazonaws.com']) {
-                sh 'kubectl get deployments'
-                sh 'kubectl apply -f /tmp/client-deployment.yml'
+            steps {
+                withKubeConfig([credentialsId: 'aws-static', serverUrl: 'https://4EB7DC51970C7A5A86305E866C1F48A8.yl4.us-west-2.eks.amazonaws.com']) {
+                    sh 'kubectl get deployments'
+                    sh 'kubectl apply -f /tmp/client-deployment.yml'
+                }
             }
         }
      }
