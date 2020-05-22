@@ -53,6 +53,7 @@ pipeline {
         stage('Apply Kubernetes files') {
             steps {
                sh "ansible --version"
+               sh "ansible-playbook ./k8s-simple-templates/playbook-k8s.yml"
             }
         }
      }
