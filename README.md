@@ -26,5 +26,5 @@ docker build -t isdance/client .
 #### run in docker
 
 ```sh
-docker run -p 3000:3000 --name client --detach isdance/client
+docker run -p 80:80 --name client --detach isdance/client
 ```

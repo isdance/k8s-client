@@ -15,7 +15,7 @@ RUN npm run build
 
 # we can't use the development server from React, therefore has to put in nginx
 FROM nginx
-EXPOSE 3000
+EXPOSE 80
 # copy our predefined nginx config file, into docker container  /etc/nginx/conf.d/default.conf
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf 
 
