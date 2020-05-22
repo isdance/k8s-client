@@ -46,7 +46,7 @@ pipeline {
                     sh "docker push isdance/client:v-${env.BUILD_ID}"
                     sh "cp /home/ubuntu/k8s-simple-templates/client-deployment.yml /tmp"
                     sh "sed -i -e \"/client:v-/s/\\([0-9]\\+\\)/${env.BUILD_ID}/\" /tmp/client-deployment.yml"
-                    sh "kubectl apply -f /tmp/client-deployment.yml"
+                    sh "/home/ubuntu/bin/kubectl apply -f /tmp/client-deployment.yml"
 				}
 			}
 		}
