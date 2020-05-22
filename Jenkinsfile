@@ -52,11 +52,12 @@ pipeline {
 
         stage('Apply Kubernetes files') {
             steps {
-                withKubeConfig([credentialsId: 'jenkins-robot', serverUrl: 'https://4EB7DC51970C7A5A86305E866C1F48A8.yl4.us-west-2.eks.amazonaws.com']) {
+               withAWS(region:'us-west-2', credentials:'aws-static') {
                     sh 'echo "Kubernetes Start"'
-                    sh '/home/ubuntu/bin/kubectl get deployments'
-                    sh '/home/ubuntu/bin/kubectl apply -f /tmp/client-deployment.yml'
-                }
+					sh '''
+						kubectl apply -f /tmp/client-deployment.yml
+					'''
+				}
             }
         }
      }
