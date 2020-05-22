@@ -54,8 +54,8 @@ pipeline {
             steps {
                 withKubeConfig([credentialsId: 'jenkins-robot', serverUrl: 'https://4EB7DC51970C7A5A86305E866C1F48A8.yl4.us-west-2.eks.amazonaws.com']) {
                     sh 'echo "Kubernetes Start"'
-                    sh 'kubectl get deployments'
-                    sh 'kubectl apply -f /tmp/client-deployment.yml'
+                    sh '/home/ubuntu/bin/kubectl get deployments'
+                    sh '/home/ubuntu/bin/kubectl apply -f /tmp/client-deployment.yml'
                 }
             }
         }
