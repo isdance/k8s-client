@@ -52,13 +52,7 @@ pipeline {
 
         stage('Apply Kubernetes files') {
             steps {
-               withAWS(region:'us-west-2', credentials:'aws-static') {
-                    sh 'echo "Kubernetes Start"'
-                    sh "export PATH=/usr/local/bin:$PATH"
-					sh '''
-						/home/ubuntu/bin/kubectl apply -f /tmp/client-deployment.yml
-					'''
-				}
+               sh "ansible --version"
             }
         }
      }
