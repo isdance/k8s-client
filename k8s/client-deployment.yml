@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      component: web
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - image: isdance/client
+          imagePullPolicy: IfNotPresent
+          name: web
+          ports:
+            - containerPort: 3000
+              protocol: TCP
