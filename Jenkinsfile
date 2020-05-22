@@ -56,7 +56,7 @@ pipeline {
                     sh 'echo "Kubernetes Start"'
                     sh "export PATH=/usr/local/bin:$PATH"
 					sh '''
-						kubectl apply -f /tmp/client-deployment.yml
+						/home/ubuntu/bin/kubectl apply -f /tmp/client-deployment.yml
 					'''
 				}
             }
