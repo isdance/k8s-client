@@ -52,7 +52,6 @@ pipeline {
 
         stage('Apply Kubernetes files') {
             steps {
-               sh "ansible --version"
                sh "ansible-playbook -i /home/ubuntu/k8s-simple-templates/inventory  /home/ubuntu/k8s-simple-templates/playbook-k8s.yml"
             }
         }
