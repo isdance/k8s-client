@@ -158,5 +158,6 @@ Listener created and forwarding traffics:
 
 ![loadbalancer-listener-created](./docs/images/loadbalancer-listener-created.png)
 
+3. Any code updates will trigger a rolling update strategy deployment
 
-3. 
+![rolling update](./docs/images/rolling-update-in-progress.png)
