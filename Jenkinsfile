@@ -13,11 +13,6 @@ pipeline {
                  sh 'npm install --loglevel verbose'
              }
          }
-         stage('Lint HTML') {
-              steps {
-                  sh 'tidy -q -e build/index.html'
-              }
-         }
          stage('Lint JavaScript') {
               steps {
                   sh 'npm run lint'
