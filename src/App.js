@@ -3,8 +3,6 @@ import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
-  const noUsed = undefined;
-  noUsed = 123; // to fail the lint
   return (
     <div className="App">
       <header className="App-header">

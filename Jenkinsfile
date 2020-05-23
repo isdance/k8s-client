@@ -11,7 +11,13 @@ pipeline {
              steps {
                  sh 'echo "Build Start"'
                  sh 'npm install --loglevel verbose'
+                 sh 'npm run build'
              }
+         }
+         stage('Lint HTML') {
+              steps {
+                  sh 'tidy -q -e build/index.html'
+              }
          }
          stage('Lint JavaScript') {
               steps {
@@ -25,7 +31,6 @@ pipeline {
          }
          stage('Build Docker Image') {
 			steps {
-                sh 'npm run build'
 				withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh "docker build -t isdance/client:v-${env.BUILD_ID} ."
 				}
