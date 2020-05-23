@@ -1,0 +1,7 @@
+- hosts: localhost
+  connection: local
+  become: yes
+  become_user: ubuntu
+  tasks:
+  - name: update k8s deployment
+    command:  "/bin/sh -c '/home/ubuntu/bin/kubectl apply -f /tmp/client-deployment.yml' "

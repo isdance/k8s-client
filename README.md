@@ -1,30 +1,32 @@
-### This is the front-end part of k8s deployment project
+### About Project:
 
-- front-end [here](https://github.com/isdance/k8s-client)
-- back-end
-- database [here](https://github.com/isdance/k8s-postgre)
-- deployment
+I created a CI/CD pipeline using Jenkins, to automate the whole workflow of code linting, packaging, containerizing and uploading. At last Jenkins will trigger a automated deployment to AWS EKS cluster, using rolling update deployment strategy.
 
-#### Install
+![pipeline-overview](./docs/images/pipeline-overview.png)
 
-```js
-npm i
+![pipeline-steps](./docs/images/pipeline-steps.png)
+
+### Project Tasks:
+
+- Working in AWS
+- Using Jenkins to implement Continuous Integration and Continuous Deployment
+- Building pipelines
+- Working with CloudFormation to deploy clusters
+- Building Kubernetes clusters
+- Building Docker containers in pipelines
+
+### Project Structure:
+
 ```
+Dockerfile: A multi-steps docker image build, including production code build, nginx integration and dockerization.
 
-#### run
+Jenkinsfile: For Jenkins pipeline
 
-```js
-npm start
-```
+/k8s: scripts for AWS EKS deployment using rolling update strategy.
 
-#### build in docker
+/eksctl: script for initial setup of the AWS EKS Cluster.
 
-```sh
-docker build -t isdance/client .
-```
+/playbooks: simple playbook to trigger EKS update.
 
-#### run in docker
-
-```sh
-docker run -p 80:80 --name client --detach isdance/client
+other: code for frontend project.
 ```

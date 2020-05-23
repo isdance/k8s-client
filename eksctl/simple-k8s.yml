@@ -1,0 +1,14 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: EKS-udacity-capstone
+  region: us-west-2
+
+nodeGroups:
+  - name: ng-1
+    minSize: 3
+    maxSize: 3
+    instanceType: t2.small
+    ssh: 
+      publicKeyName: jumpbox-key

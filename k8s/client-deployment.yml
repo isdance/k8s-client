@@ -13,7 +13,7 @@ spec:
         component: web
     spec:
       containers:
-        - image: isdance/client
+        - image: isdance/client:v-43
           imagePullPolicy: IfNotPresent
           name: web
           ports:
